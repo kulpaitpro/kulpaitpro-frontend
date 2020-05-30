@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/kulpaitpro/kulpaitpro.github.io/static/css/main.5f361e03.chunk.css",
+    "main.js": "/kulpaitpro/kulpaitpro.github.io/static/js/main.ca7d14f5.chunk.js",
+    "main.js.map": "/kulpaitpro/kulpaitpro.github.io/static/js/main.ca7d14f5.chunk.js.map",
+    "runtime-main.js": "/kulpaitpro/kulpaitpro.github.io/static/js/runtime-main.1bef8b1f.js",
+    "runtime-main.js.map": "/kulpaitpro/kulpaitpro.github.io/static/js/runtime-main.1bef8b1f.js.map",
+    "static/js/2.c2b9107d.chunk.js": "/kulpaitpro/kulpaitpro.github.io/static/js/2.c2b9107d.chunk.js",
+    "static/js/2.c2b9107d.chunk.js.map": "/kulpaitpro/kulpaitpro.github.io/static/js/2.c2b9107d.chunk.js.map",
+    "index.html": "/kulpaitpro/kulpaitpro.github.io/index.html",
+    "precache-manifest.f0b2cc7feab7c00b6b6043d3e274661c.js": "/kulpaitpro/kulpaitpro.github.io/precache-manifest.f0b2cc7feab7c00b6b6043d3e274661c.js",
+    "service-worker.js": "/kulpaitpro/kulpaitpro.github.io/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/kulpaitpro/kulpaitpro.github.io/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.c2b9107d.chunk.js.LICENSE.txt": "/kulpaitpro/kulpaitpro.github.io/static/js/2.c2b9107d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1bef8b1f.js",
+    "static/js/2.c2b9107d.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.ca7d14f5.chunk.js"
+  ]
+}
