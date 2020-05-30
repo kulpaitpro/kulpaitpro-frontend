@@ -1,12 +1,30 @@
-import React from 'react'
+import React, {useState, memo, useEffect} from 'react';
+import axios from 'axios';
+import {serverAddress} from '../config';
 
-export const Header = () => {
+const Header = () => {
+
+  const[apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${serverAddress}header`)
+    .then(response => setApiData(response.data));
+  }, [apiData])
+    
   return (
     <section id="topbar" className="d-none d-lg-block">
       <div className="container clearfix">
         <div className="contact-info float-left">
-          <i className="fa fa-envelope-o" /> <a href="mailto:contact@example.com">contact@example.com</a>
-          <i className="fa fa-phone" /> +1 5589 55488 55
+          {apiData && apiData.map((el, i) => {
+            return <span key={i}>
+            {el.name === 'contact' ? 
+            <>
+              <i className="fa fa-envelope-o" />
+              <a href="mailto:contact@example.com">{el.src}</a>
+            </> : 
+            <><i className="fa fa-phone"></i>{el.src}</>}
+            </span>
+          })}
     </div>
         <div className="social-links float-right">
           <a href="#" className="twitter"><i className="fa fa-twitter" /></a>
@@ -20,3 +38,5 @@ export const Header = () => {
 
   )
 }
+
+export default memo(Header)

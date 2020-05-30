@@ -1,6 +1,16 @@
-import React from 'react'
+import React,{useState, memo, useEffect} from 'react';
+import axios from 'axios';
+import {serverAddress} from '../config';
 
 export const Menu = () => {
+
+  const[apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${serverAddress}menu`)
+    .then(response => setApiData(response.data));
+  }, []);
+
   return (
     <header id="header">
       <div className="container">
@@ -10,20 +20,9 @@ export const Menu = () => {
         </div>
         <nav id="nav-menu-container">
           <ul className="nav-menu">
-            <li className="menu-active"><a href="#body">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#team">Team</a></li>
-            <li className="menu-has-children"><a href>Drop Down</a>
-              <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
-                <li><a href="#">Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#contact">Contact</a></li>
+          {apiData && apiData.map((el, i) => {
+            return <><li className="menu-active"><a href="#body">{el.name}</a></li></>
+          })}
           </ul>
         </nav>
       </div>
