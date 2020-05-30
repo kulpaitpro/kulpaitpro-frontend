@@ -2,7 +2,7 @@ import React,{useState, memo, useEffect} from 'react';
 import axios from 'axios';
 import {serverAddress} from '../config';
 
-export const Menu = () => {
+const Menu = () => {
 
   const[apiData, setApiData] = useState([]);
 
@@ -30,3 +30,5 @@ export const Menu = () => {
 
   )
 }
+
+export default memo(Menu);

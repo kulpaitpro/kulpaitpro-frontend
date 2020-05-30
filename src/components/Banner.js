@@ -1,10 +1,20 @@
-import React from 'react'
+import React, { useState, memo, useEffect } from 'react';
+import axios from 'axios';
+import { serverAddress } from '../config';
 
-export const Banner = () => {
+const Banner = () => {
+
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    axios.get(`${serverAddress}baner`)
+      .then(response => setApiData(response.data));
+  }, []);
+
   return (
     <section id="intro">
       <div className="intro-content">
-        <h2>Making <span>your ideas</span><br />happen!</h2>
+      <div className="content" dangerouslySetInnerHTML={{__html: apiData && apiData[0] && apiData[0].content}}></div>
         <div>
           <a href="#about" className="btn-get-started scrollto">Get Started</a>
           <a href="#portfolio" className="btn-projects scrollto">Our Projects</a>
@@ -18,6 +28,7 @@ export const Banner = () => {
         <div className="item" style={{ backgroundImage: 'url("img/intro-carousel/5.jpg")' }} />
       </div>
     </section>
-
   )
 }
+
+export default memo(Banner);
