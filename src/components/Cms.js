@@ -17,7 +17,7 @@ const Cms = () => {
       <div dangerouslySetInnerHTML={{ __html: apiData && apiData[0] && apiData[0].content }}></div>
       <div dangerouslySetInnerHTML={{ __html: apiData && apiData[1] && apiData[1].content }}></div>
       <div dangerouslySetInnerHTML={{ __html: apiData && apiData[2] && apiData[2].content }}></div>
-      <section id="portfolio" class="wow fadeInUp">
+      <section id="portfolio" className="wow fadeInUp">
         <div dangerouslySetInnerHTML={{ __html: apiData && apiData[3] && apiData[3].content }}></div>
         <PortfolioGallery />
       </section>

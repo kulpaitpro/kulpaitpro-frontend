@@ -1,14 +1,19 @@
-import React,{useState, memo, useEffect} from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import axios from 'axios';
-import {serverAddress} from '../config';
+import { serverAddress } from '../config';
 
 const Menu = () => {
+  //  TPDO: add slugs to menu
+  const [apiData, setApiData] = useState([]);
+  const [activeLink, setActiveLink] = useState(0);;
 
-  const[apiData, setApiData] = useState([]);
+  const handleActiveLink = (i) => {
+    setActiveLink(i);
+  }
 
   useEffect(() => {
     axios.get(`${serverAddress}menu`)
-    .then(response => setApiData(response.data));
+      .then(response => setApiData(response.data));
   }, []);
 
   return (
@@ -20,9 +25,17 @@ const Menu = () => {
         </div>
         <nav id="nav-menu-container">
           <ul className="nav-menu">
-          {apiData && apiData.map((el, i) => {
-            return <><li className="menu-active"><a href="#body">{el.name}</a></li></>
-          })}
+            {apiData && apiData.map((el, i) => {
+              return <React.Fragment key={i}>
+                <li 
+                className={activeLink === i && 'menu-active'}
+                onClick={() => handleActiveLink(i)}
+                >
+                  <a href="#body">{el.name}
+                  </a>
+                </li>
+              </React.Fragment>
+            })}
           </ul>
         </nav>
       </div>

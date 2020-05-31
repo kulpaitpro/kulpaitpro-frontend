@@ -16,8 +16,8 @@ const Banner = () => {
       <div className="intro-content">
       <div className="content" dangerouslySetInnerHTML={{__html: apiData && apiData[0] && apiData[0].content}}></div>
         <div>
-          <a href="#about" className="btn-get-started scrollto">Get Started</a>
-          <a href="#portfolio" className="btn-projects scrollto">Our Projects</a>
+          <a href="#about" className="btn-get-started scrollto">Zacznij z Nami</a>
+          <a href="#portfolio" className="btn-projects scrollto">Nasze projekty</a>
         </div>
       </div>
       <div id="intro-carousel" className="owl-carousel">
