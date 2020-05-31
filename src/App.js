@@ -4,16 +4,16 @@ import Header from './components/Header';
 import Menu from './components/Menu';
 import Banner from './components/Banner';
 import Cms from './components/Cms';
-import {Contact} from './components/Contact';
+import { Contact } from './components/Contact';
 
 function App() {
   return (
     <>
-    <Header />
-    <Menu />
-    <Banner />
-    <Cms />
-    <Contact />   
+      <Header />
+      <Menu />
+      <Banner />
+      <Cms />
+      <Contact />
     </>
   );
 }

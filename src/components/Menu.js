@@ -28,7 +28,7 @@ const Menu = () => {
             {apiData && apiData.map((el, i) => {
               return <React.Fragment key={i}>
                 <li 
-                className={activeLink === i && 'menu-active'}
+                className={activeLink === i ? 'menu-active' : undefined}
                 onClick={() => handleActiveLink(i)}
                 >
                   <a href="#body">{el.name}

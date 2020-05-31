@@ -1,7 +1,8 @@
 import React, { useState, memo, useEffect } from 'react';
 import axios from 'axios';
 import { serverAddress } from '../config';
-import PortfolioGallery from './PortfolioGallery'
+import PortfolioGallery from './PortfolioGallery';
+import ContactForm from './ContactForm';
 
 const Cms = () => {
 
@@ -22,7 +23,10 @@ const Cms = () => {
         <PortfolioGallery />
       </section>
       <div dangerouslySetInnerHTML={{ __html: apiData && apiData[4] && apiData[4].content }}></div>
-      <div dangerouslySetInnerHTML={{ __html: apiData && apiData[5] && apiData[5].content }}></div>
+      <section id="contact" className="wow fadeInUp">
+        <div dangerouslySetInnerHTML={{ __html: apiData && apiData[5] && apiData[5].content }}></div>
+        <ContactForm />
+      </section>
     </main>
 
   )
