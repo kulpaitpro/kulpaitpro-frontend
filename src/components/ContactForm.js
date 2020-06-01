@@ -8,14 +8,18 @@ const ContactForm = () => {
   const { register, handleSubmit, errors, formState } = useForm();
   const { isValid } = formState;
   const[isMsgSent, setIsMsgSent] = useState(false);
+  const[isServerErr, setServerErr] = useState(false);
   const onSubmit = data => {
-    
-    axios.post(`${serverAddress}contactform`)
+
+    axios.post(`${serverAddress}contactform`, data)
       .then(response => {
         setIsMsgSent(true);
+        setTimeout(() => setIsMsgSent(false), 5000);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
+        setServerErr(true);
+        setTimeout(() => setServerErr(false), 5000);
       });
   };
   return (
@@ -25,7 +29,7 @@ const ContactForm = () => {
         <form role="form" className="contactForm" onSubmit={handleSubmit(onSubmit)}>
           <div className="form-row">
             <div className="form-group col-md-6">
-              <input ref={register} type="text" name="name" className="form-control" id="name" placeholder="Imię" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+              <input ref={register({ required: true })} type="text" name="name" className="form-control" id="name" placeholder="Imię" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
               <div className="validation" />
             </div>
             <div className="form-group col-md-6">
@@ -41,13 +45,18 @@ const ContactForm = () => {
             <textarea ref={register({ required: true })} className="form-control" name="message" rows={5} data-rule="required" data-msg="Please write something for us" placeholder="Wiadomość" defaultValue={""} />
             <div className="validation" />
           </div>
+          {errors.name && 
+            <div className="alert alert-danger" role="alert">Pole Imię jest wymagane </div>}
           {errors.email && 
             <div className="alert alert-danger" role="alert">Pole Email jest wymagane </div>}
           {errors.subject && 
             <div className="alert alert-danger" role="alert">Pole Temat jest wymagane </div>}
           {errors.message && 
             <div className="alert alert-danger" role="alert">Pole Wiadomość jest wymagane </div>}
-          {isMsgSent && <div className="alert alert-success" role="alert">Wiadomość została wysłana</div>}
+          {isMsgSent && 
+            <div className="alert alert-success" role="alert">Wiadomość została wysłana</div>}
+          {isServerErr && 
+            <div className="alert alert-danger" role="alert">Przepraszamy.Wiadomość nie została wysłana. Spróbuj ponownie później</div>}
           <div className="text-center">
             <button style={!isValid ? {cursor: 'not-allowed'} : {cursor: 'default'}} type="submit">Send Message</button></div>
         </form>
