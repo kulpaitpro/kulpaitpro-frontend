@@ -9,7 +9,7 @@ const Header = () => {
   useEffect(() => {
     axios.get(`${serverAddress}header`)
     .then(response => setApiData(response.data));
-  }, [apiData])
+  }, [])
     
   return (
     <section id="topbar" className="d-none d-lg-block">
