@@ -3,15 +3,21 @@ import axios from 'axios';
 import { serverAddress } from '../config';
 import PortfolioGallery from './PortfolioGallery';
 import ContactForm from './ContactForm';
+import { useDispatch } from 'react-redux';
 
 const Cms = () => {
 
   const [apiData, setApiData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({type: 'UPDATE_LOADER', payload: {cms: true}});
     axios.get(`${serverAddress}cms`)
-      .then(response => setApiData(response.data));
-  }, []);
+      .then(response => {
+        setApiData(response.data);
+        dispatch({type: 'UPDATE_LOADER', payload: {cms: false}});
+      });
+  }, [dispatch]);
 
   return (
     <main id="main">

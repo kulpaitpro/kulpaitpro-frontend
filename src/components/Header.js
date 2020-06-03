@@ -1,15 +1,21 @@
 import React, {useState, memo, useEffect} from 'react';
 import axios from 'axios';
 import {serverAddress} from '../config';
+import { useDispatch } from 'react-redux';
 
 const Header = () => {
 
   const[apiData, setApiData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({type: 'UPDATE_LOADER', payload: {header: true}});
     axios.get(`${serverAddress}header`)
-    .then(response => setApiData(response.data));
-  }, [])
+    .then(response => {
+      setApiData(response.data);
+      dispatch({type: 'UPDATE_LOADER', payload: {header: false}});
+    });
+  }, [dispatch])
     
   return (
     <section id="topbar" className="d-none d-lg-block">

@@ -1,15 +1,21 @@
 import React, { useState, memo, useEffect } from 'react';
 import axios from 'axios';
 import { serverAddress } from '../config';
+import { useDispatch } from 'react-redux';
 
 const Banner = () => {
 
   const [apiData, setApiData] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch({type: 'UPDATE_LOADER', payload: {banner: true}});
     axios.get(`${serverAddress}baner`)
-      .then(response => setApiData(response.data));
-  }, []);
+      .then(response => {
+        setApiData(response.data);
+        dispatch({type: 'UPDATE_LOADER', payload: {banner: false}});
+      });
+  }, [dispatch]);
 
   return (
     <section id="intro">

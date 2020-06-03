@@ -1,20 +1,26 @@
 import React, { useState, memo, useEffect } from 'react';
 import axios from 'axios';
 import { serverAddress } from '../config';
+import { useDispatch } from 'react-redux';
 
 const Menu = () => {
-  //  TPDO: add slugs to menu
+  
   const [apiData, setApiData] = useState([]);
-  const [activeLink, setActiveLink] = useState(0);;
+  const [activeLink, setActiveLink] = useState(0);
+  const dispatch = useDispatch();
 
   const handleActiveLink = (i) => {
     setActiveLink(i);
   }
 
   useEffect(() => {
+    dispatch({type: 'UPDATE_LOADER', payload: {header: false}});
     axios.get(`${serverAddress}menu`)
-      .then(response => setApiData(response.data));
-  }, []);
+      .then(response => {
+        setApiData(response.data);
+        dispatch({type: 'UPDATE_LOADER', payload: {header: false}});
+      });
+  }, [dispatch]);
 
   return (
     <header id="header">
@@ -31,7 +37,7 @@ const Menu = () => {
                 className={activeLink === i ? 'menu-active' : undefined}
                 onClick={() => handleActiveLink(i)}
                 >
-                  <a href="#body">{el.name}
+                  <a href={`#${el.slug}`}>{el.name}
                   </a>
                 </li>
               </React.Fragment>

@@ -1,24 +1,24 @@
 import { combineReducers } from 'redux';
 
-const postsReducer = (state = {}, action) => {
-  switch(action.type) {
-    case 'FETCH_POSTS':
-      return {
-        pagination: action.payload.pagination,
-        default: action.payload.posts,
-        home: action.payload.posts.slice(0, 6),
-        slider: action.payload.posts.slice(0, 3),
-        blog: action.payload.posts
-      };
-    default:
-      return state
+const initState = {
+  loaders: {
+    banner: false,
+    cms: false,
+    header: false,
+    menu: false,
+    portfolio: false
   }
-};
+}
 
-const showLoaderReducer = (state = 'none', action) => {
+const showLoaderReducer = (state = initState, action) => {
+  const {payload} = action;
+  
   switch(action.type) {
-    case 'SHOW_LOADER':
-      return action.payload;
+    case 'UPDATE_LOADER':
+      return {
+        ...state, 
+        loaders: {...state.loaders, ...payload}
+      };
     default:
       return state
   }
@@ -26,6 +26,5 @@ const showLoaderReducer = (state = 'none', action) => {
 
 // register reducers
 export default combineReducers({
-  posts: postsReducer,
-  showLoader: showLoaderReducer
+  showLoaderReducer
 });
