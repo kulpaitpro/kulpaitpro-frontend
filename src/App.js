@@ -6,6 +6,7 @@ import Banner from './components/Banner';
 import Cms from './components/Cms';
 import { Contact } from './components/Contact';
 import { useSelector } from 'react-redux';
+import Nav from './components/Nav';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Cms />
           <Contact />
           <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+          <Nav area="mobile" />
         </>
       
     </>

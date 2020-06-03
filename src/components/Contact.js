@@ -5,7 +5,7 @@ export const Contact = () => {
     <footer id="footer">
       <div className="container">
         <div className="copyright">
-          © Copyright <strong>Reveal</strong>. All Rights Reserved
+          © Copyright <strong>KulpaItPro</strong>. All Rights Reserved
     </div>
         <div className="credits">
           {/*
@@ -14,7 +14,7 @@ export const Contact = () => {
     Licensing information: https://bootstrapmade.com/license/
     Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Reveal
   */}
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      Design <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
     </footer>
